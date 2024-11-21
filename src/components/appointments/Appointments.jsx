@@ -27,7 +27,7 @@ export default function Appointments(){
     } else {
       navigate("/login")
     }
-  }, [token]);
+  }, [token, navigate]);
 
   const sortedAppointments = sortAppointments(appointments);
 

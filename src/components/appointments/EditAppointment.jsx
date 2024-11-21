@@ -13,21 +13,6 @@ export default function EditAppointment(){
   const [rating, setRating] = useState(null);
   const [notes, setNotes] = useState(null);
 
-  const getAppointment = async ()  => {
-    try {
-      const resp = await axios.get(`http://localhost:3000/appointments/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const appointment = resp.data;
-      setStartTime(appointment.start_time);
-      setEndTime(appointment.end_time);
-      setRating(appointment.rating);
-      setNotes(appointment.notes);
-    } catch (error) {
-      console.error('Error fetching appointment:', error);
-    };
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -57,8 +42,23 @@ export default function EditAppointment(){
   }
 
   useEffect(() => {
+    const getAppointment = async ()  => {
+      try {
+        const resp = await axios.get(`http://localhost:3000/appointments/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const appointment = resp.data;
+        setStartTime(appointment.start_time);
+        setEndTime(appointment.end_time);
+        setRating(appointment.rating);
+        setNotes(appointment.notes);
+      } catch (error) {
+        console.error('Error fetching appointment:', error);
+      };
+    };
+
     getAppointment();
-  }, [])
+  }, [token, id])
 
   return (
     <div>
