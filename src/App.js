@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
+import { AuthProvider } from './context/AuthContext';
+import Appointments from './components/appointments/Appointments';
+import CreateAppointment from './components/appointments/CreateAppointment';
+import EditAppointment from './components/appointments/EditAppointment';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" exact element={<Appointments />} />
+            <Route path="/new" element={<CreateAppointment />} />
+            <Route path="/edit/:id" element={<EditAppointment />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
