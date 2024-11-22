@@ -28,3 +28,7 @@
 .open-tag {
   background-color: yellow;
 }
+
+button:hover {
+  cursor: pointer;
+}
