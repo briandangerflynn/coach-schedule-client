@@ -8,7 +8,8 @@ export default function Appointment({appointment, setAppointments}){
 
   return(
     <>
-      {student ? <span className="tag booked-tag">Booked</span> : <span className="tag open-tag">Open for Booking</span>}
+      {student && <span className="tag booked-tag">Booked</span>}
+      {!student && !appointmentComplete(end_time) && <span className="tag open-tag">Open for Booking</span>}
       {appointmentComplete(end_time) && <span className="tag complete-tag">Complete</span>}
 
       <h3>Coach: {printName(coach)}</h3>
