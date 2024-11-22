@@ -6,4 +6,16 @@
 - `npm start`
 - Rails server should already be running on `localhost:3000`, so make sure to start server in `localhost:3001`
 
+### Login info
+- Student login:
+    - email: student@gmail.com
+    - pw: asdf
+- Coach logins:
+    - Email: coach1@gmail.com
+    - Pw: asdf
+    - Email: coach2@gmail.com
+    - Pw: asdf
+    - Email: coach3@gmail.com
+    - Pw: asdf
+
 ### Thanks for reviewing! 🥳
